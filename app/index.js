@@ -14,15 +14,11 @@ export default function Home() {
         	headerStyle: { backgroundColor: COLORS.lightWhite } ,
 			headerShadowVisible: false,
 			headerLeft: () => (
-					<ScreenHeaderBtn iconUrl = {icons.menu} dimentions = "60%">
-
-					</ScreenHeaderBtn>
+					<ScreenHeaderBtn iconUrl = {icons.menu} dimention = "60%" />
 				)
 			 , 
 			headerRight: () => (
-					<ScreenHeaderBtn iconUrl = {icons.profile} dimentions = "100%">
-
-					</ScreenHeaderBtn>
+					<ScreenHeaderBtn iconUrl = {images.profile} dimention = "100%" />
 				)
 			,
 			headerTitle: ""
