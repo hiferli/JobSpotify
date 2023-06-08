@@ -37,7 +37,7 @@ const Popularjobs = () => {
 				: error ? (<Text>Something Went Wrong!</Text>)
 				: (
 					<FlatList 
-						data={[1 , 2 , 3 , 4]}
+						data={data}
 						renderItem={( {item} ) => (
 							<PopularJobCard item={item}/>						
 						)}
