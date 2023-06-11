@@ -24,6 +24,11 @@ const JobDetails = () => {
     const displayTabContent = () => {
         switch (activeTab) {
             case "About":
+                return (
+                    <JobAbout 
+                        info={data[0].job_description ?? "No Data Available!"}
+                    />
+                )
 
 
             case "Qualifications":
