@@ -1,42 +1,52 @@
 import { useState } from "react";
-import { View , ScrollView , SafeAreaView } from "react-native";
-import { Link, Stack , useRouter } from "expo-router";
+import { View, ScrollView, SafeAreaView } from "react-native";
+import { Link, Stack, useRouter } from "expo-router";
 
-import {COLORS , icons , images , SIZES } from '../constants'
-import { Nearbyjobs , Popularjobs , ScreenHeaderBtn , Welcome } from '../components'
+import { COLORS, icons, images, SIZES } from '../constants'
+import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from '../components'
 
 export default function Home() {
-  return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+	const router = useRouter();
+	const [searchTerm, setSearchTerm] = useState("");
+	return (
+		<SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
 
-      <Stack.Screen options= 
-        {{ 
-        	headerStyle: { backgroundColor: COLORS.lightWhite } ,
-			headerShadowVisible: false,
-			headerLeft: () => (
-					<ScreenHeaderBtn iconUrl = {icons.menu} dimention = "60%" />
-				)
-			 , 
-			headerRight: () => (
-					<ScreenHeaderBtn iconUrl = {images.profile} dimention = "100%" />
-				)
-			,
-			headerTitle: ""
-        }} 
-    	/>
-
-		<ScrollView showsVerticalScrollIndicator={false}>
-			<View 
-				style={{
-					flex: 1,
-					padding: SIZES.medium
+			<Stack.Screen options=
+				{{
+					headerStyle: { backgroundColor: COLORS.lightWhite },
+					headerShadowVisible: false,
+					headerLeft: () => (
+						<ScreenHeaderBtn iconUrl={icons.menu} dimention="60%" />
+					)
+					,
+					headerRight: () => (
+						<ScreenHeaderBtn iconUrl={images.profile} dimention="100%" />
+					)
+					,
+					headerTitle: ""
 				}}
-			>
-				<Welcome/>
-				<Popularjobs />
-				<Nearbyjobs />
-			</View>
-		</ScrollView>
-    </SafeAreaView>
-  );
+			/>
+
+			<ScrollView showsVerticalScrollIndicator={false}>
+				<View
+					style={{
+						flex: 1,
+						padding: SIZES.medium
+					}}
+				>
+					<Welcome
+						searchTerm={searchTerm}
+						setSearchTerm={setSearchTerm}
+						handleClick={() => {
+							if(searchTerm){
+								router.push(`/search/${searchTerm}`)
+							}
+						}}
+					/>
+					<Popularjobs />
+					<Nearbyjobs />
+				</View>
+			</ScrollView>
+		</SafeAreaView>
+	);
 }
